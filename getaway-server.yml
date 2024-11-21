@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    gateway:
+      lower-case-service-id: true
+      routes:
+        - id: order-service
+          uri: lb://order-service/
+          predicates:
+            - Path=/order/**
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://localhost:8070/eureka
+server:
+  port: 8072
