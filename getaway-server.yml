@@ -1,4 +1,9 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/microservices-realm
   cloud:
     gateway:
       lower-case-service-id: true
@@ -7,6 +12,10 @@ spring:
           uri: lb://order-service/
           predicates:
             - Path=/order/**
+        - id: auth-service
+          uri: lb://auth-service/
+          predicates:
+            - Path=/auth/**
 keycloak:
   realm: microservices-realm
   auth-server-url: http://localhost:8080/auth
@@ -26,3 +35,6 @@ eureka:
       defaultZone: http://localhost:8070/eureka
 server:
   port: 8072
+logging:
+  level:
+    org.springframework.security: DEBUG
