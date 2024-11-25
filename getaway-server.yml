@@ -24,7 +24,7 @@ spring:
           uri: lb://order-service/
           predicates:
             - Path=/order/**
-        - id: auth-service
+        - id: createUser-service
           uri: lb://createUser-service/
           predicates:
             - Path=/createUser/**
