@@ -10,8 +10,8 @@ spring:
           keycloak:
             client-id: spring-microservices
             client-secret: UwW3MThVtBFS1ujL5Zmy6PyOVIv9XHou
-            authorization-grant-type: client_credentials
-            scope: openid,profile
+            authorization-grant-type: authorization_code
+            scope: openid, profile
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/microservices-realm
