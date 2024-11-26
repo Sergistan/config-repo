@@ -31,6 +31,8 @@ spring:
           uri: lb://createUser-service/
           predicates:
             - Path=/createUser/**
+          filters:
+            - StripPrefix=1
     loadbalancer:
       retry:
         enabled: true
