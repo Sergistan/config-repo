@@ -15,22 +15,25 @@ spring:
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/microservices-realm
+            token-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/token
+            authorization-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/auth
+            user-info-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/userinfo
   cloud:
-      gateway:
-        default-filters:
-          - TokenRelay=
-        routes:
-          - id: order-service
-            uri: lb://order-service/
-            predicates:
-              - Path=/order/**
-          - id: createUser-service
-            uri: lb://createUser-service/
-            predicates:
-              - Path=/createUser/**
-      loadbalancer:
-        retry:
-          enabled: true
+    gateway:
+      default-filters:
+        - TokenRelay=
+      routes:
+        - id: order-service
+          uri: lb://order-service/
+          predicates:
+            - Path=/order/**
+        - id: createUser-service
+          uri: lb://createUser-service/
+          predicates:
+            - Path=/createUser/**
+    loadbalancer:
+      retry:
+        enabled: true
 eureka:
   instance:
     prefer-ip-address: true
