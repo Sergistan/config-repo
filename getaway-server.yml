@@ -35,6 +35,12 @@ spring:
             - Path=/createUser/**
           filters:
             - StripPrefix=1
+        - id: profileManagement-service
+          uri: lb://profileManagement-service/
+          predicates:
+            - Path=/profileManagement/**
+          filters:
+            - StripPrefix=1
     loadbalancer:
       retry:
         enabled: true
