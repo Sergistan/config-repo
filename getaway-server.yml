@@ -11,7 +11,7 @@ spring:
             client-id: spring-microservices
             client-secret: UwW3MThVtBFS1ujL5Zmy6PyOVIv9XHou
             authorization-grant-type: authorization_code
-            scope: openid, profile, email
+            scope: openid, profile
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/microservices-realm
@@ -21,7 +21,7 @@ spring:
   cloud:
     gateway:
       default-filters:
-        - TokenRelay
+        - TokenRelay=
       routes:
         - id: order-service
           uri: lb://order-service/
