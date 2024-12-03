@@ -10,7 +10,7 @@ spring:
           keycloak:
             client-id: spring-microservices
             client-secret: UwW3MThVtBFS1ujL5Zmy6PyOVIv9XHou
-            authorization-grant-type: client_credentials
+            authorization-grant-type: password
             scope: openid, profile
         provider:
           keycloak:
