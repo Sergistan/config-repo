@@ -12,17 +12,18 @@ spring:
             client-secret: UwW3MThVtBFS1ujL5Zmy6PyOVIv9XHou
             authorization-grant-type: authorization_code
             scope: openid, profile, email
-            redirect-uri: http://localhost:8072/login/oauth2/code/keycloak
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/microservices-realm
             token-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/token
             authorization-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/auth
             user-info-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
   cloud:
     gateway:
       default-filters:
-        - TokenRelay=
+        - TokenRelay
       routes:
         - id: order-service
           uri: lb://order-service/
