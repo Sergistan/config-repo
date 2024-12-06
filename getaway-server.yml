@@ -24,7 +24,7 @@ spring:
   cloud:
     gateway:
       default-filters:
-        - TokenRelay=
+        - TokenRelay
       routes:
         - id: order-service
           uri: lb://order-service/
