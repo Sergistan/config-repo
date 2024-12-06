@@ -17,6 +17,6 @@ keycloak:
   auth-server-url: http://localhost:8080
   realm: microservices-realm
   client-id: spring-microservices
-  client-secret: UwW3MThVtBFS1ujL5Zmy6PyOVIv9XHou
+  client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
 server:
   port: 8182

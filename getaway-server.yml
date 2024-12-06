@@ -9,7 +9,7 @@ spring:
         registration:
           keycloak:
             client-id: spring-microservices
-            client-secret: UwW3MThVtBFS1ujL5Zmy6PyOVIv9XHou
+            client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
             authorization-grant-type: authorization_code
             scope: openid, profile, email
             redirect-uri: http://localhost:8072/profileManagement/api/v1/hi
