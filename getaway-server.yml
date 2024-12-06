@@ -44,9 +44,6 @@ spring:
             - Path=/profileManagement/**
           filters:
             - StripPrefix=1
-    loadbalancer:
-      retry:
-        enabled: true
 eureka:
   instance:
     prefer-ip-address: true
