@@ -4,6 +4,7 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8080/realms/microservices-realm
       client:
         registration:
           keycloak:
