@@ -12,6 +12,9 @@ spring:
             client-secret: UwW3MThVtBFS1ujL5Zmy6PyOVIv9XHou
             authorization-grant-type: authorization_code
             scope: openid, profile, email
+	    redirect-uri: http://localhost:8080/login/oauth2/code/keycloak
+            client-name: Keycloak
+	    provider: keycloak
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/microservices-realm
