@@ -59,4 +59,4 @@ server:
   port: 8072
 logging:
   level:
-    org.springframework.security: DEBUG
+    org.springframework.security: TRACE

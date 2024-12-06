@@ -20,3 +20,6 @@ keycloak:
   client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
 server:
   port: 8182
+logging:
+  level:
+    org.springframework.security: TRACE
