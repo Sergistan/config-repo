@@ -3,7 +3,6 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/certs
           issuer-uri: http://localhost:8080/realms/microservices-realm
       client:
         registration:
@@ -11,8 +10,7 @@ spring:
             client-id: spring-microservices
             client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
             authorization-grant-type: authorization_code
-            scope: openid, profile, email
-            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+            scope: openid
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/microservices-realm
