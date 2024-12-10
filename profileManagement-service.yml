@@ -1,9 +1,3 @@
-spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/certs
 eureka:
   instance:
     prefer-ip-address: true
@@ -19,10 +13,6 @@ keycloak:
   client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
 server:
   port: 8182
-  servlet:
-    session:
-      cookie:
-        same-site: lax
 logging:
   level:
     org.springframework.security: TRACE
