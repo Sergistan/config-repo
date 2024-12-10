@@ -1,9 +1,6 @@
 spring:
   security:
     oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/microservices-realm
       client:
         registration:
           keycloak:
@@ -15,10 +12,7 @@ spring:
           keycloak:
             issuer-uri: http://localhost:8080/realms/microservices-realm
             token-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/token
-            authorization-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/auth
-            user-info-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/userinfo
             user-name-attribute: preferred_username
-            jwk_set_uri : http://localhost:8080/realms/microservices-realm/protocol/openid-connect/certs
   cloud:
     gateway:
       default-filters:
