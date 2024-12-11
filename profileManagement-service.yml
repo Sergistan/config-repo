@@ -9,8 +9,10 @@ eureka:
 keycloak:
   auth-server-url: http://localhost:8080
   realm: microservices-realm
-  client-id: spring-microservices
-  client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
+  realm-admin: master
+  client-id-admin: admin-cli
+  admin-username: admin
+  admin-password: admin
 server:
   port: 8182
 logging:
