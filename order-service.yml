@@ -7,15 +7,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-keycloak:
-  realm: microservices-realm
-  auth-server-url: http://localhost:8080
-  ssl-required: external
-  resource: spring-microservices
-  credentials:
-    secret: oYVcSzV9bwKd95VfsV0zEhqlSzTbFyqD
-  use-resource-role-mappings: true
-  bearer-only: true
 eureka:
   instance:
     prefer-ip-address: true
