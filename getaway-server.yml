@@ -27,6 +27,12 @@ spring:
             - Path=/order/**
           filters:
             - StripPrefix=1
+        - id: shop-service
+          uri: lb://shop-service/
+          predicates:
+            - Path=/shop/**
+          filters:
+            - StripPrefix=1
     loadbalancer:
       retry:
         enabled: true
