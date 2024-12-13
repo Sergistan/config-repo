@@ -27,18 +27,6 @@ spring:
             - Path=/order/**
           filters:
             - StripPrefix=1
-        - id: createUser-service
-          uri: lb://createUser-service/
-          predicates:
-            - Path=/createUser/**
-          filters:
-            - StripPrefix=1
-        - id: profileManagement-service
-          uri: lb://profileManagement-service/
-          predicates:
-            - Path=/profileManagement/**
-          filters:
-            - StripPrefix=1
     loadbalancer:
       retry:
         enabled: true
