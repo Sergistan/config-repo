@@ -1,4 +1,9 @@
 spring:
+  cloud:
+    openfeign:
+      oauth2:
+        clientRegistrationId: spring-microservices
+        enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5432/OrderServiceDB
     username: postgres
