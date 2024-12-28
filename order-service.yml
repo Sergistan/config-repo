@@ -11,7 +11,7 @@ spring:
           keycloak:
             client-id: spring-microservices
             client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
-            authorization-grant-type: client_credentials
+            authorization-grant-type: authorization_code
             scope: openid
   cloud:
     openfeign:
