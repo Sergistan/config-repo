@@ -1,7 +1,5 @@
 spring:
   security:
-spring:
-  security:
     oauth2:
       resourceserver:
         jwt:
