@@ -1,23 +1,15 @@
 spring:
   security:
+spring:
+  security:
     oauth2:
-      client:
-        provider:
-          keycloak:
-            issuer-uri: http://localhost:8080/realms/microservices-realm
-            token-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/token
-            user-name-attribute: preferred_username
-        registration:
-          keycloak:
-            client-id: spring-microservices
-            client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
-            authorization-grant-type: client_credentials
-            scope: openid
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/microservices-realm
   cloud:
     openfeign:
       oauth2:
-        clientRegistrationId: keycloak
-        enabled: true
+        enabled: false
   datasource:
     url: jdbc:postgresql://localhost:5432/ShopServiceDB
     username: postgres
