@@ -45,6 +45,28 @@ resilience4j:
           - java.io.IOException
           - java.util.concurrent.TimeoutException
           - org.springframework.web.client.ResourceAccessException
+      circuitBreakerPayOrder:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.io.IOException
+          - java.util.concurrent.TimeoutException
+          - org.springframework.web.client.ResourceAccessException
+      circuitBreakerRefundedOrder:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.io.IOException
+          - java.util.concurrent.TimeoutException
+          - org.springframework.web.client.ResourceAccessException
   retry:
     instances:
       retryCheckOrder:
@@ -53,6 +75,16 @@ resilience4j:
         retryExceptions:
           - java.util.concurrent.TimeoutException
       retryCreateOrder:
+        max-attempts: 3
+        waitDuration: 10s
+        retryExceptions:
+          - java.util.concurrent.TimeoutException
+      retryPayOrder:
+        max-attempts: 3
+        waitDuration: 10s
+        retryExceptions:
+          - java.util.concurrent.TimeoutException
+      retryRefundedOrder:
         max-attempts: 3
         waitDuration: 10s
         retryExceptions:
