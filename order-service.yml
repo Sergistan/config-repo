@@ -51,10 +51,7 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         waitDurationInOpenState: 10s
         failureRateThreshold: 50
-        ignore-exceptions:
-          - com.utochkin.orderservice.exceptions.FailedPayOrderException
-          - com.utochkin.orderservice.exceptions.FailedOrderStatusException
-          - com.utochkin.orderservice.exceptions.OrderNotFoundException
+        ignore-exception-predicate: com.utochkin.orderservice.config.IgnoreExceptionPredicate
         recordExceptions:
           - org.springframework.web.client.HttpServerErrorException
           - java.io.IOException
@@ -66,10 +63,7 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         waitDurationInOpenState: 10s
         failureRateThreshold: 50
-        ignore-exceptions:
-          - com.utochkin.orderservice.exceptions.FailedPayOrderException
-          - com.utochkin.orderservice.exceptions.FailedOrderStatusException
-          - com.utochkin.orderservice.exceptions.OrderNotFoundException
+        ignore-exception-predicate: com.utochkin.orderservice.config.IgnoreExceptionPredicate
         recordExceptions:
           - org.springframework.web.client.HttpServerErrorException
           - java.io.IOException
