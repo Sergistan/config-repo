@@ -51,6 +51,7 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         waitDurationInOpenState: 10s
         failureRateThreshold: 50
+        ignore-exception-predicate: "exception instanceof com.utochkin.orderservice.exceptions.FailedPayOrderException or exception instanceof com.utochkin.orderservice.exceptions.FailedOrderStatusException or exception instanceof com.utochkin.orderservice.exceptions.OrderNotFoundException"
         ignore-exceptions:
           - com.utochkin.orderservice.exceptions.FailedPayOrderException
           - com.utochkin.orderservice.exceptions.FailedOrderStatusException
@@ -66,6 +67,7 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         waitDurationInOpenState: 10s
         failureRateThreshold: 50
+        ignore-exception-predicate: "exception instanceof com.utochkin.orderservice.exceptions.FailedPayOrderException or exception instanceof com.utochkin.orderservice.exceptions.FailedOrderStatusException or exception instanceof com.utochkin.orderservice.exceptions.OrderNotFoundException"
         ignore-exceptions:
           - com.utochkin.orderservice.exceptions.FailedPayOrderException
           - com.utochkin.orderservice.exceptions.FailedOrderStatusException
