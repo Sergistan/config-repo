@@ -51,6 +51,10 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         waitDurationInOpenState: 10s
         failureRateThreshold: 50
+        ignore-exceptions:
+          - com.utochkin.orderservice.exceptions.FailedPayOrderException
+          - com.utochkin.orderservice.exceptions.FailedOrderStatusException
+          - com.utochkin.orderservice.exceptions.OrderNotFoundException
         recordExceptions:
           - org.springframework.web.client.HttpServerErrorException
           - java.io.IOException
@@ -62,6 +66,10 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         waitDurationInOpenState: 10s
         failureRateThreshold: 50
+        ignore-exceptions:
+          - com.utochkin.orderservice.exceptions.FailedPayOrderException
+          - com.utochkin.orderservice.exceptions.FailedOrderStatusException
+          - com.utochkin.orderservice.exceptions.OrderNotFoundException
         recordExceptions:
           - org.springframework.web.client.HttpServerErrorException
           - java.io.IOException
@@ -82,11 +90,19 @@ resilience4j:
       retryPayOrder:
         max-attempts: 3
         waitDuration: 10s
+        ignore-exceptions:
+          - com.utochkin.orderservice.exceptions.FailedPayOrderException
+          - com.utochkin.orderservice.exceptions.FailedOrderStatusException
+          - com.utochkin.orderservice.exceptions.OrderNotFoundException
         retryExceptions:
           - java.util.concurrent.TimeoutException
       retryRefundedOrder:
         max-attempts: 3
         waitDuration: 10s
+        ignore-exceptions:
+          - com.utochkin.orderservice.exceptions.FailedPayOrderException
+          - com.utochkin.orderservice.exceptions.FailedOrderStatusException
+          - com.utochkin.orderservice.exceptions.OrderNotFoundException
         retryExceptions:
           - java.util.concurrent.TimeoutException
 
