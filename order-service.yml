@@ -52,6 +52,11 @@ resilience4j:
         waitDurationInOpenState: 10s
         failureRateThreshold: 50
         ignore-exception-predicate: com.utochkin.orderservice.config.IgnoreExceptionPredicate
+        ignore-exceptions:
+          - com.utochkin.orderservice.exceptions.FailedPayOrderException
+          - com.utochkin.orderservice.exceptions.FailedOrderStatusException
+          - com.utochkin.orderservice.exceptions.OrderNotFoundException
+          - com.utochkin.orderservice.exceptions.ServiceUnavailableException
         recordExceptions:
           - org.springframework.web.client.HttpServerErrorException
           - java.io.IOException
@@ -64,6 +69,11 @@ resilience4j:
         waitDurationInOpenState: 10s
         failureRateThreshold: 50
         ignore-exception-predicate: com.utochkin.orderservice.config.IgnoreExceptionPredicate
+        ignore-exceptions:
+          - com.utochkin.orderservice.exceptions.FailedPayOrderException
+          - com.utochkin.orderservice.exceptions.FailedOrderStatusException
+          - com.utochkin.orderservice.exceptions.OrderNotFoundException
+          - com.utochkin.orderservice.exceptions.ServiceUnavailableException
         recordExceptions:
           - org.springframework.web.client.HttpServerErrorException
           - java.io.IOException
@@ -88,6 +98,7 @@ resilience4j:
           - com.utochkin.orderservice.exceptions.FailedPayOrderException
           - com.utochkin.orderservice.exceptions.FailedOrderStatusException
           - com.utochkin.orderservice.exceptions.OrderNotFoundException
+          - com.utochkin.orderservice.exceptions.ServiceUnavailableException
         retryExceptions:
           - java.util.concurrent.TimeoutException
       retryRefundedOrder:
@@ -97,6 +108,7 @@ resilience4j:
           - com.utochkin.orderservice.exceptions.FailedPayOrderException
           - com.utochkin.orderservice.exceptions.FailedOrderStatusException
           - com.utochkin.orderservice.exceptions.OrderNotFoundException
+          - com.utochkin.orderservice.exceptions.ServiceUnavailableException
         retryExceptions:
           - java.util.concurrent.TimeoutException
 
