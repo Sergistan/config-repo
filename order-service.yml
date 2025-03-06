@@ -22,6 +22,8 @@ spring:
           time_zone: Europe/Moscow
   kafka:
     bootstrap-servers: localhost:9092
+    properties:
+      security.protocol: PLAINTEXT
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
