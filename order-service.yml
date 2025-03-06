@@ -20,6 +20,11 @@ spring:
       hibernate:
         jdbc:
           time_zone: Europe/Moscow
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.JsonSerializer
 resilience4j:
   circuitbreaker:
     instances:
