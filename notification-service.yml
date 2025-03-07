@@ -4,18 +4,6 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8080/realms/microservices-realm
-  datasource:
-    url: jdbc:postgresql://localhost:5432/NotificationServiceDB
-    username: postgres
-    password: 1234
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        jdbc:
-          time_zone: Europe/Moscow
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
@@ -24,7 +12,19 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-          spring.json.trusted.packages: "*"
+        spring.json.trusted.packages: "*"
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "5df620ff5a675075d09d4d555ff608d6e6856dced2a8e69c6faea6759803f77a71f1304edf5dc77f0bca5790fff0967c"
+    password: "b1a75230694168aec9faa0a355754a0f8841ffa263a500925f6af9cb3d70169c8781c058f12f3023df54243e85d35d0f"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    test-connection: true
 eureka:
   instance:
     prefer-ip-address: true
