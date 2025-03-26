@@ -1,6 +1,8 @@
 spring:
   data:
     mongodb:
+      user: mongodb
+      password: mongodb
       uri: mongodb://localhost:27017/HistoryServiceDB
   security:
     oauth2:
