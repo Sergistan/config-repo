@@ -20,6 +20,11 @@ spring:
       hibernate:
         jdbc:
           time_zone: Europe/Moscow
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      client-type: lettuce
 eureka:
   instance:
     prefer-ip-address: true
