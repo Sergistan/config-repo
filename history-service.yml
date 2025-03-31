@@ -1,7 +1,4 @@
 spring:
-  jackson:
-    serialization:
-      write-dates-as-timestamps: false
   data:
     mongodb:
       uri: mongodb://localhost:27017/HistoryServiceDB
