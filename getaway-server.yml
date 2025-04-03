@@ -22,23 +22,23 @@ spring:
         - TokenRelay=
       routes:
         - id: order-service
-          uri: http://localhost:8180
+          uri: lb://order-service
           predicates:
             - Path=/order/**
           filters:
-            - PreserveHostHeader
+            - RewritePath=/order/(?<segment>.*), /$\{segment}
         - id: shop-service
-          uri: http://localhost:8181
+          uri: lb://shop-service
           predicates:
             - Path=/shop/**
           filters:
-            - PreserveHostHeader
+            - RewritePath=/shop/(?<segment>.*), /$\{segment}
         - id: payment-service
-          uri: http://localhost:8182
+          uri: lb://payment-service
           predicates:
             - Path=/payment/**
           filters:
-            - PreserveHostHeader
+            - RewritePath=/payment/(?<segment>.*), /$\{segment}
     loadbalancer:
       retry:
         enabled: true
