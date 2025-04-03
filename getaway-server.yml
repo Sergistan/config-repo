@@ -60,9 +60,9 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     urls:
-      - url: /order/v3/api-docs
+      - url: /order/**
         name: Order Service
-      - url: /shop/v3/api-docs
+      - url: /shop/**
         name: Shop Service
-      - url: /payment/v3/api-docs
+      - url: /payment/**
         name: Payment Service
