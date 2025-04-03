@@ -39,8 +39,8 @@ spring:
             - Path=/payment/**
           filters:
             - PreserveHostHeader
-         - id: swagger-ui
-          uri: classpath:/META-INF/resources/webjars/swagger-ui/  # Путь к ресурсам
+        - id: swagger-ui
+          uri: classpath:/META-INF/resources/webjars/swagger-ui/  
           predicates:
             - Path=/swagger-ui/**
           filters:
