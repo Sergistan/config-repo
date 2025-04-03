@@ -24,19 +24,19 @@ spring:
         - id: order-service
           uri: http://localhost:8180
           predicates:
-            - Path=/order/api/v1/**
+            - Path=/order/**
           filters:
             - PreserveHostHeader
         - id: shop-service
           uri: http://localhost:8181
           predicates:
-            - Path=/shop/api/v1/**
+            - Path=/shop/**
           filters:
             - PreserveHostHeader
         - id: payment-service
           uri: http://localhost:8182
           predicates:
-            - Path=/payment/api/v1/**
+            - Path=/payment/**
           filters:
             - PreserveHostHeader
     loadbalancer:
@@ -60,9 +60,9 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     urls:
-      - url: /order-service/v3/api-docs
+      - url: /order/v3/api-docs
         name: Order Service
-      - url: /shop-service/v3/api-docs
+      - url: /shop/v3/api-docs
         name: Shop Service
-      - url: /payment-service/v3/api-docs
+      - url: /payment/v3/api-docs
         name: Payment Service
