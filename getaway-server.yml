@@ -39,6 +39,12 @@ spring:
             - Path=/payment/**
           filters:
             - PreserveHostHeader
+         - id: swagger-ui
+          uri: classpath:/META-INF/resources/webjars/swagger-ui/  # Путь к ресурсам
+          predicates:
+            - Path=/swagger-ui/**
+          filters:
+            - RewritePath=/swagger-ui/(?<segment>.*), /$\{segment}
     loadbalancer:
       retry:
         enabled: true
