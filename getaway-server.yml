@@ -24,30 +24,42 @@ spring:
         - id: order-service
           uri: http://localhost:8180
           predicates:
-            - Path=/order/**
+            - Path=/order/api/v1/**
           filters:
             - PreserveHostHeader
+        - id: order-service-docs
+          uri: http://localhost:8180
+          predicates:
+            - Path=/order/v3/api-docs/**
+          filters:
             - RewritePath=/order/(?<segment>.*), /$\{segment}
+            - PreserveHostHeader
         - id: shop-service
           uri: http://localhost:8181
           predicates:
-            - Path=/shop/**
+            - Path=/shop/api/v1/**
           filters:
             - PreserveHostHeader
+        - id: shop-service-docs
+          uri: http://localhost:8181
+          predicates:
+            - Path=/shop/v3/api-docs/**
+          filters:
             - RewritePath=/shop/(?<segment>.*), /$\{segment}
+            - PreserveHostHeader
         - id: payment-service
           uri: http://localhost:8182
           predicates:
-            - Path=/payment/**
+            - Path=/payment/api/v1/**
           filters:
             - PreserveHostHeader
-            - RewritePath=/payment/(?<segment>.*), /$\{segment}
-        - id: swagger-ui
-          uri: forward:/swagger-ui  
+        - id: payment-service-docs
+          uri: http://localhost:8182
           predicates:
-            - Path=/swagger-ui/**
+            - Path=/payment/v3/api-docs/**
           filters:
-            - RewritePath=/swagger-ui/(?<segment>.*), /$\{segment}
+            - RewritePath=/payment/(?<segment>.*), /$\{segment}
+            - PreserveHostHeader
     loadbalancer:
       retry:
         enabled: true
