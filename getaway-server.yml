@@ -27,18 +27,21 @@ spring:
             - Path=/order/**
           filters:
             - PreserveHostHeader
+            - RewritePath=/order/(?<segment>.*), /$\{segment}
         - id: shop-service
           uri: http://localhost:8181
           predicates:
             - Path=/shop/**
           filters:
             - PreserveHostHeader
+            - RewritePath=/order/(?<segment>.*), /$\{segment}
         - id: payment-service
           uri: http://localhost:8182
           predicates:
             - Path=/payment/**
           filters:
             - PreserveHostHeader
+            - RewritePath=/order/(?<segment>.*), /$\{segment}
         - id: swagger-ui
           uri: forward:/swagger-ui  
           predicates:
