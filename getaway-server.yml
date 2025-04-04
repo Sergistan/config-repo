@@ -40,7 +40,7 @@ spring:
           filters:
             - PreserveHostHeader
         - id: swagger-ui
-          uri: classpath:/META-INF/resources/webjars/swagger-ui/  
+          uri: forward:/swagger-ui  
           predicates:
             - Path=/swagger-ui/**
           filters:
