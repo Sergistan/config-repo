@@ -21,7 +21,7 @@ spring:
         jdbc:
           time_zone: Europe/Moscow
   liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yaml
+    change-log: classpath:changelog/db.changelog-master.yaml
     enabled: true
   kafka:
     bootstrap-servers: localhost:9092
