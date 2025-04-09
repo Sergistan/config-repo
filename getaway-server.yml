@@ -166,7 +166,7 @@ eureka:
     service-url:
       register-with-eureka: true
       fetch-registry: true
-      defaultZone: http://eureka-server:8070/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
 server:
   port: 8072
 logging:
