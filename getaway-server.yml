@@ -1,11 +1,107 @@
+# для локального запуска
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        provider:
+#          keycloak:
+#            issuer-uri: http://localhost:8080/realms/microservices-realm
+#            token-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/token
+#            user-name-attribute: preferred_username
+#        registration:
+#          keycloak:
+#            client-id: spring-microservices
+#            client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
+#            authorization-grant-type: authorization_code
+#            scope: openid
+#      resourceserver:
+#        jwt:
+#          jwk-set-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/certs
+#  cloud:
+#    gateway:
+#      default-filters:
+#        - TokenRelay=
+#      routes:
+#        - id: order-service
+#          uri: http://localhost:8180
+#          predicates:
+#            - Path=/order/api/v1/**
+#          filters:
+#            - PreserveHostHeader
+#        - id: order-service-docs
+#          uri: http://localhost:8180
+#          predicates:
+#            - Path=/order/v3/api-docs/**
+#          filters:
+#            - RewritePath=/order/(?<segment>.*), /$\{segment}
+#            - PreserveHostHeader
+#        - id: shop-service
+#          uri: http://localhost:8181
+#          predicates:
+#            - Path=/shop/api/v1/**
+#          filters:
+#            - PreserveHostHeader
+#        - id: shop-service-docs
+#          uri: http://localhost:8181
+#          predicates:
+#            - Path=/shop/v3/api-docs/**
+#          filters:
+#            - RewritePath=/shop/(?<segment>.*), /$\{segment}
+#            - PreserveHostHeader
+#        - id: payment-service
+#          uri: http://localhost:8182
+#          predicates:
+#            - Path=/payment/api/v1/**
+#          filters:
+#            - PreserveHostHeader
+#        - id: payment-service-docs
+#          uri: http://localhost:8182
+#          predicates:
+#            - Path=/payment/v3/api-docs/**
+#          filters:
+#            - RewritePath=/payment/(?<segment>.*), /$\{segment}
+#            - PreserveHostHeader
+#    loadbalancer:
+#      retry:
+#        enabled: true
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    service-url:
+#      register-with-eureka: true
+#      fetch-registry: true
+#      defaultZone: http://localhost:8070/eureka
+#server:
+#  port: 8072
+#logging:
+#  level:
+#    org.springframework.security: TRACE
+#JWT_PUBLIC_KEY: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAus5oDGGeMlx8oB6a7NB9iyIIzFexizkhLW0M+G6Gy5elgHzbZdVey9tqtEGan2dfudUIN1hZeOumQYFYjnfeLHx88EMmSaOzM+8wf9tpBcZt0O60d1mffnJ8LHQCqqzLytB2nHvU5wZDrtwhkvoJTMrdhoyTrVeXpsXTzoni92M5UPz17g+NqiE3o+/SopFrPuCTMFT9IpMIWe16+Y5Zf3Qg87LduzMcJT9eDxOEbO9HG/A6YTdxbooiAHqATfOpWFTxX3CwoTP7MXA6wEeqCUbVN+5iL8EVFWL0wIOwxxCMTVrE5ZtVFSWt5Id0ZgkblY6576wxPHGomQqw2M2ztQIDAQAB"
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#    oauth:
+#      client-id: spring-microservices
+#      client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
+#      scopes: openid,profile
+#      use-pkce-with-authorization-code-grant: true
+#    urls:
+#      - url: /order/v3/api-docs
+#        name: Order Service
+#      - url: /shop/v3/api-docs
+#        name: Shop Service
+#      - url: /payment/v3/api-docs
+#        name: Payment Service
+
 spring:
   security:
     oauth2:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/microservices-realm
-            token-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/token
+            issuer-uri: http://keycloak:8080/realms/microservices-realm
+            token-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/token
             user-name-attribute: preferred_username
         registration:
           keycloak:
@@ -15,50 +111,50 @@ spring:
             scope: openid
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/certs
+          jwk-set-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
   cloud:
     gateway:
       default-filters:
         - TokenRelay=
       routes:
         - id: order-service
-          uri: http://localhost:8180
+          uri: http://order-service:8180
           predicates:
             - Path=/order/api/v1/**
           filters:
             - PreserveHostHeader
         - id: order-service-docs
-          uri: http://localhost:8180
+          uri: http://order-service:8180
           predicates:
             - Path=/order/v3/api-docs/**
           filters:
-            - RewritePath=/order/(?<segment>.*), /$\{segment}
+            - RewritePath=/order/(?<segment>.*), /${segment}
             - PreserveHostHeader
         - id: shop-service
-          uri: http://localhost:8181
+          uri: http://shop-service:8181
           predicates:
             - Path=/shop/api/v1/**
           filters:
             - PreserveHostHeader
         - id: shop-service-docs
-          uri: http://localhost:8181
+          uri: http://shop-service:8181
           predicates:
             - Path=/shop/v3/api-docs/**
           filters:
-            - RewritePath=/shop/(?<segment>.*), /$\{segment}
+            - RewritePath=/shop/(?<segment>.*), /${segment}
             - PreserveHostHeader
         - id: payment-service
-          uri: http://localhost:8182
+          uri: http://payment-service:8182
           predicates:
             - Path=/payment/api/v1/**
           filters:
             - PreserveHostHeader
         - id: payment-service-docs
-          uri: http://localhost:8182
+          uri: http://payment-service:8182
           predicates:
             - Path=/payment/v3/api-docs/**
           filters:
-            - RewritePath=/payment/(?<segment>.*), /$\{segment}
+            - RewritePath=/payment/(?<segment>.*), /${segment}
             - PreserveHostHeader
     loadbalancer:
       retry:
@@ -70,7 +166,7 @@ eureka:
     service-url:
       register-with-eureka: true
       fetch-registry: true
-      defaultZone: http://localhost:8070/eureka
+      defaultZone: http://eureka-server:8070/eureka/
 server:
   port: 8072
 logging:
