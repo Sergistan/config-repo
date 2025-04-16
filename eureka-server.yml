@@ -11,17 +11,17 @@
 #    enable-self-preservation: false
 
 server:
-  port: 8761
+  port: 8070
 
 eureka:
   instance:
     hostname: eureka-server
     prefer-ip-address: true
-    nonSecurePort: 8761
+    nonSecurePort: 8070
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://eureka-server:8070/eureka/
   server:
     enable-self-preservation: false
