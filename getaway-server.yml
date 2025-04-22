@@ -95,6 +95,14 @@
 #        name: Payment Service
 
 spring:
+  application:
+    name: getaway-server
+  config:
+    import: optional:configserver:http://config-server:8071
+jwt:
+  public-key: ${JWT_PUBLIC_KEY}
+
+spring:
   security:
     oauth2:
       client:
@@ -118,39 +126,39 @@ spring:
         - TokenRelay=
       routes:
         - id: order-service
-          uri: http://order-service:8180
+          uri: lb://order-service
           predicates:
             - Path=/order/api/v1/**
           filters:
             - PreserveHostHeader
         - id: order-service-docs
-          uri: http://order-service:8180
+          uri: lb://order-service
           predicates:
             - Path=/order/v3/api-docs/**
           filters:
             - RewritePath=/order/(?<segment>.*), /${segment}
             - PreserveHostHeader
         - id: shop-service
-          uri: http://shop-service:8181
+          uri: lb://shop-service
           predicates:
             - Path=/shop/api/v1/**
           filters:
             - PreserveHostHeader
         - id: shop-service-docs
-          uri: http://shop-service:8181
+          uri: lb://shop-service
           predicates:
             - Path=/shop/v3/api-docs/**
           filters:
             - RewritePath=/shop/(?<segment>.*), /${segment}
             - PreserveHostHeader
         - id: payment-service
-          uri: http://payment-service:8182
+          uri: lb://payment-service
           predicates:
             - Path=/payment/api/v1/**
           filters:
             - PreserveHostHeader
         - id: payment-service-docs
-          uri: http://payment-service:8182
+          uri: lb://payment-service
           predicates:
             - Path=/payment/v3/api-docs/**
           filters:
@@ -160,14 +168,11 @@ spring:
       retry:
         enabled: true
 eureka:
-  instance:
-    hostname: eureka-server
-    prefer-ip-address: false
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry:    true
     service-url:
-      defaultZone: http://config-server:8071/eureka/
+      defaultZone: http://eureka-server:8761/eurek
 server:
   port: 8072
 logging:
