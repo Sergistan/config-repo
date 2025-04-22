@@ -1,9 +1,49 @@
+# для локального запуска
+#spring:
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8080/realms/microservices-realm
+#  cloud:
+#    openfeign:
+#      oauth2:
+#        enabled: false
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/ShopServiceDB
+#    username: postgres
+#    password: 1234
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        jdbc:
+#          time_zone: Europe/Moscow
+#  liquibase:
+#    change-log: classpath:changelog/db.changelog-master.yaml
+#    enabled: true
+#  data:
+#    redis:
+#      url: redis://localhost:6379
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    service-url:
+#      register-with-eureka: true
+#      fetch-registry: true
+#      defaultZone: http://localhost:8070/eureka
+#server:
+#  port: 8181
+
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/microservices-realm
+          issuer-uri: http://keycloak:8080/realms/microservices-realm
   cloud:
     openfeign:
       oauth2:
@@ -25,14 +65,13 @@ spring:
     enabled: true
   data:
     redis:
-      url: redis://localhost:6379
+      host: redis
+      port: 6379
 eureka:
-  instance:
-    prefer-ip-address: true
   client:
+    register-with-eureka: true
+    fetch-registry:    true
     service-url:
-      register-with-eureka: true
-      fetch-registry: true
-      defaultZone: http://localhost:8070/eureka
+      defaultZone: http://eureka-server:8761/eureka/
 server:
   port: 8181
