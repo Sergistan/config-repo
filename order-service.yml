@@ -1,15 +1,128 @@
+# для локального запуска
+#spring:
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8080/realms/microservices-realm
+#  cloud:
+#    openfeign:
+#      oauth2:
+#        enabled: false
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/OrderServiceDB
+#    username: postgres
+#    password: 1234
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        jdbc:
+#          time_zone: Europe/Moscow
+#  liquibase:
+#    change-log: classpath:changelog/db.changelog-master.yaml
+#    enabled: true
+#  kafka:
+#    bootstrap-servers: kafka:29092, localhost:9092
+#    properties:
+#      security.protocol: PLAINTEXT
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      circuitBreakerCheckOrder:
+#        registerHealthIndicator: true
+#        slidingWindowSize: 5
+#        permittedNumberOfCallsInHalfOpenState: 3
+#        waitDurationInOpenState: 10s
+#        failureRateThreshold: 50
+#        recordExceptions:
+#          - org.springframework.web.client.HttpServerErrorException
+#          - java.io.IOException
+#          - java.util.concurrent.TimeoutException
+#          - org.springframework.web.client.ResourceAccessException
+#      circuitBreakerCreateOrder:
+#        registerHealthIndicator: true
+#        slidingWindowSize: 5
+#        permittedNumberOfCallsInHalfOpenState: 3
+#        waitDurationInOpenState: 10s
+#        failureRateThreshold: 50
+#        recordExceptions:
+#          - org.springframework.web.client.HttpServerErrorException
+#          - java.io.IOException
+#          - java.util.concurrent.TimeoutException
+#          - org.springframework.web.client.ResourceAccessException
+#      circuitBreakerPayOrder:
+#        registerHealthIndicator: true
+#        slidingWindowSize: 5
+#        permittedNumberOfCallsInHalfOpenState: 3
+#        waitDurationInOpenState: 10s
+#        failureRateThreshold: 50
+#        recordExceptions:
+#          - org.springframework.web.client.HttpServerErrorException
+#          - java.io.IOException
+#          - java.util.concurrent.TimeoutException
+#          - org.springframework.web.client.ResourceAccessException
+#      circuitBreakerRefundedOrder:
+#        registerHealthIndicator: true
+#        slidingWindowSize: 5
+#        permittedNumberOfCallsInHalfOpenState: 3
+#        waitDurationInOpenState: 10s
+#        failureRateThreshold: 50
+#        recordExceptions:
+#          - org.springframework.web.client.HttpServerErrorException
+#          - java.io.IOException
+#          - java.util.concurrent.TimeoutException
+#          - org.springframework.web.client.ResourceAccessException
+#  retry:
+#    instances:
+#      retryCheckOrder:
+#        max-attempts: 3
+#        waitDuration: 10s
+#        retryExceptions:
+#          - java.util.concurrent.TimeoutException
+#      retryCreateOrder:
+#        max-attempts: 3
+#        waitDuration: 10s
+#        retryExceptions:
+#          - java.util.concurrent.TimeoutException
+#      retryPayOrder:
+#        max-attempts: 3
+#        waitDuration: 10s
+#        retryExceptions:
+#          - java.util.concurrent.TimeoutException
+#      retryRefundedOrder:
+#        max-attempts: 3
+#        waitDuration: 10s
+#        retryExceptions:
+#          - java.util.concurrent.TimeoutException
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    service-url:
+#      register-with-eureka: true
+#      fetch-registry: true
+#      defaultZone: http://localhost:8070/eureka
+#server:
+#  port: 8180
+
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/microservices-realm
+          issuer-uri: http://keycloak:8080/realms/microservices-realm
   cloud:
     openfeign:
       oauth2:
         enabled: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/OrderServiceDB
+    url: jdbc:postgresql://postgres-order:5432/OrderServiceDB
     username: postgres
     password: 1234
   jpa:
@@ -100,12 +213,10 @@ resilience4j:
         retryExceptions:
           - java.util.concurrent.TimeoutException
 eureka:
-  instance:
-    prefer-ip-address: true
   client:
+    register-with-eureka: true
+    fetch-registry:    true
     service-url:
-      register-with-eureka: true
-      fetch-registry: true
-      defaultZone: http://localhost:8070/eureka
+      defaultZone: http://eureka-server:8761/eureka/
 server:
   port: 8180
