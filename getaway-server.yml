@@ -95,14 +95,6 @@
 #        name: Payment Service
 
 spring:
-  application:
-    name: getaway-server
-  config:
-    import: optional:configserver:http://config-server:8071
-jwt:
-  public-key: ${JWT_PUBLIC_KEY}
-
-spring:
   security:
     oauth2:
       client:
