@@ -35,7 +35,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://admin:pass@mongo:27017/HistoryServiceDB
+      uri: mongodb://admin:pass@mongo:27017
       uuid-representation: standard
       auto-index-creation: false
   security:
