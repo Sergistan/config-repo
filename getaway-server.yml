@@ -161,12 +161,13 @@ spring:
         enabled: true
 eureka:
   instance:
-    prefer-ip-address: true
+    hostname: eureka-server
+    prefer-ip-address: false
   client:
+    register-with-eureka: false
+    fetch-registry: false
     service-url:
-      register-with-eureka: true
-      fetch-registry: true
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://config-server:8071/eureka/
 server:
   port: 8072
 logging:
