@@ -1,9 +1,50 @@
+#spring:
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8080/realms/microservices-realm
+#  kafka:
+#    bootstrap-servers: kafka:29092, localhost:9092
+#    consumer:
+#      group-id: notification-group
+#      auto-offset-reset: earliest
+#      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+#      properties:
+#        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+#        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+#        spring.json.type.mapping: "com.utochkin.orderservice.dto.OrderDtoForKafka:com.utochkin.notificationservice.dto.OrderDtoForKafka"
+#        spring.json.trusted.packages: "com.utochkin.orderservice.dto,com.utochkin.notificationservice.dto"
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: "{cipher}5df620ff5a675075d09d4d555ff608d6e6856dced2a8e69c6faea6759803f77a71f1304edf5dc77f0bca5790fff0967c"
+#    password: "{cipher}b1a75230694168aec9faa0a355754a0f8841ffa263a500925f6af9cb3d70169c8781c058f12f3023df54243e85d35d0f"
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#    test-connection: true
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    service-url:
+#      register-with-eureka: true
+#      fetch-registry: true
+#      defaultZone: http://localhost:8070/eureka
+#server:
+#  port: 8183
+
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/microservices-realm
+          issuer-uri: http://keycloak:8080/realms/microservices-realm
   kafka:
     bootstrap-servers: kafka:29092, localhost:9092
     consumer:
@@ -29,12 +70,10 @@ spring:
             enable: true
     test-connection: true
 eureka:
-  instance:
-    prefer-ip-address: true
   client:
+    register-with-eureka: true
+    fetch-registry:    true
     service-url:
-      register-with-eureka: true
-      fetch-registry: true
-      defaultZone: http://localhost:8070/eureka
+      defaultZone: http://eureka-server:8761/eureka/
 server:
   port: 8183
