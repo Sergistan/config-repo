@@ -35,13 +35,9 @@
 spring:
   data:
     mongodb:
-      host: hostIpOnWhichMongoIsRunning
-      port: 27017
-      database: HistoryServiceDB
-      username: admin
-      password: pass
-      uuid-representation: standard
-      auto-index-creation: false
+       uri: mongodb://admin:pass@mongo:27017/HistoryServiceDB
+       uuid-representation: standard
+       auto-index-creation: false
   security:
     oauth2:
       resourceserver:
