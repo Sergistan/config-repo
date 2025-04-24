@@ -100,7 +100,7 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://keycloak:8080/realms/microservices-realm
+            jwk-set-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
             token-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/token
             user-name-attribute: preferred_username
         registration:
