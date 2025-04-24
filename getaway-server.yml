@@ -95,6 +95,13 @@
 #        name: Payment Service
 
 spring:
+  sleuth:
+    sampler:
+      probability: 0.1
+  zipkin:
+    base-url: http://zipkin:9411/
+    sender:
+      type: web
   security:
     oauth2:
       client:
@@ -167,9 +174,6 @@ eureka:
       defaultZone: http://eureka-server:8761/eureka/
 server:
   port: 8072
-logging:
-  level:
-    org.springframework.security: TRACE
 JWT_PUBLIC_KEY: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAus5oDGGeMlx8oB6a7NB9iyIIzFexizkhLW0M+G6Gy5elgHzbZdVey9tqtEGan2dfudUIN1hZeOumQYFYjnfeLHx88EMmSaOzM+8wf9tpBcZt0O60d1mffnJ8LHQCqqzLytB2nHvU5wZDrtwhkvoJTMrdhoyTrVeXpsXTzoni92M5UPz17g+NqiE3o+/SopFrPuCTMFT9IpMIWe16+Y5Zf3Qg87LduzMcJT9eDxOEbO9HG/A6YTdxbooiAHqATfOpWFTxX3CwoTP7MXA6wEeqCUbVN+5iL8EVFWL0wIOwxxCMTVrE5ZtVFSWt5Id0ZgkblY6576wxPHGomQqw2M2ztQIDAQAB"
 springdoc:
   swagger-ui:
@@ -186,3 +190,21 @@ springdoc:
         name: Shop Service
       - url: /payment/v3/api-docs
         name: Payment Service
+management:
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,trace
+  endpoint:
+    prometheus:
+      enabled: true
+logging:
+  level:
+    root: INFO
+  logstash:
+    host: logstash
+    port: 5000

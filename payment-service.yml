@@ -36,6 +36,13 @@
 #  port: 8182
 
 spring:
+  sleuth:
+    sampler:
+      probability: 0.1
+  zipkin:
+    base-url: http://zipkin:9411/
+    sender:
+      type: web
   security:
     oauth2:
       resourceserver:
@@ -68,3 +75,21 @@ eureka:
       defaultZone: http://eureka-server:8761/eureka/
 server:
   port: 8182
+management:
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,trace
+  endpoint:
+    prometheus:
+      access: unrestricted
+logging:
+  level:
+    root: INFO
+  logstash:
+    host: logstash
+    port: 5000
