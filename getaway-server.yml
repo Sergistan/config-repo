@@ -95,9 +95,6 @@
 #        name: Payment Service
 
 spring:
-  sleuth:
-    sampler:
-      probability: 0.1
   zipkin:
     base-url: http://zipkin:9411/
     sender:
@@ -120,6 +117,8 @@ spring:
         jwt:
           jwk-set-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
   cloud:
+    compatibility-verifier:
+      enabled: false
     gateway:
       default-filters:
         - TokenRelay=
@@ -191,6 +190,9 @@ springdoc:
       - url: /payment/v3/api-docs
         name: Payment Service
 management:
+  tracing:
+    sampling:
+      probability: 0.1
   prometheus:
     metrics:
       export:
