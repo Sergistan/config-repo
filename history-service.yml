@@ -85,6 +85,9 @@ management:
   endpoint:
     prometheus:
       access: unrestricted
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
 logging:
   level:
     root: INFO
