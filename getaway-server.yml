@@ -104,8 +104,8 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/microservices-realm
-            token-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/token
+            issuer-uri: http://keycloak:8080/realms/microservices-realm
+            token-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/token
             user-name-attribute: preferred_username
         registration:
           keycloak:
@@ -115,7 +115,7 @@ spring:
             scope: openid
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8080/realms/microservices-realm/protocol/openid-connect/certs
+          jwk-set-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
   cloud:
     compatibility-verifier:
       enabled: false
@@ -182,6 +182,10 @@ springdoc:
       client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
       scopes: openid,profile
       use-pkce-with-authorization-code-grant: true
+      scope-separator: " "
+      additional-query-string-params:
+        prompt: login
+        redirect_uri: http://localhost:8072/swagger-ui/oauth2-redirect.html
     urls:
       - url: /order/v3/api-docs
         name: Order Service
@@ -189,6 +193,7 @@ springdoc:
         name: Shop Service
       - url: /payment/v3/api-docs
         name: Payment Service
+    config-url: /v3/api-docs/swagger-config
 management:
   zipkin:
     tracing:
