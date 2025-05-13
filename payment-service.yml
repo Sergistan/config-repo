@@ -44,7 +44,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://keycloak:8080/realms/microservices-realm
+          issuer-uri: http://localhost:8080/realms/microservices-realm
   cloud:
     compatibility-verifier:
       enabled: false
@@ -52,7 +52,7 @@ spring:
       oauth2:
         enabled: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/PaymentServiceDB
+    url: jdbc:postgresql://postgres-payment:5432/PaymentServiceDB
     username: postgres
     password: 1234
   jpa:
