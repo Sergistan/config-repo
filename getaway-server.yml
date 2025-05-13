@@ -188,7 +188,7 @@ springdoc:
       scope-separator: " "
       additional-query-string-params:
         prompt: login
-        redirect_uri: http://localhost:8072/swagger-ui/oauth2-redirect.html
+        redirect_uri: http://localhost:8072/webjars/swagger-ui/oauth2-redirect.html
     urls:
       - url: /order/v3/api-docs
         name: Order Service
@@ -197,6 +197,7 @@ springdoc:
       - url: /payment/v3/api-docs
         name: Payment Service
     config-url: /v3/api-docs/swagger-config
+    oauth2-redirect-url: /webjars/swagger-ui/oauth2-redirect.html
 management:
   zipkin:
     tracing:
