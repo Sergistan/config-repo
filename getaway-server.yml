@@ -111,6 +111,7 @@ spring:
             user-name-attribute: preferred_username
         registration:
           keycloak:
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             client-id: spring-microservices
             client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
             authorization-grant-type: authorization_code
