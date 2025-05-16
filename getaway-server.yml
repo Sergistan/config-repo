@@ -127,7 +127,7 @@ spring:
         - TokenRelay=
       routes:
         - id: keycloak-auth
-          uri: http://localhost:8080
+          uri: http://keycloak:8080
           predicates:
             - Path=/auth/**,/realms/**
           filters:
