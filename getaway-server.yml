@@ -188,7 +188,10 @@ springdoc:
     prefix: /webjars
   swagger-ui:
     path: /swagger-ui.html
+    disable-swagger-default-url: true
     oauth2-redirect-url: /webjars/swagger-ui/oauth2-redirect.html
+    urls-primary-name: Order Service
+    query-config-enabled: true
     oauth:
       client-id: spring-microservices
       client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
@@ -221,7 +224,7 @@ management:
         include: health,info,prometheus,trace
   endpoint:
     prometheus:
-      enabled: true
+      access: unrestricted
 logging:
   level:
     root: INFO
