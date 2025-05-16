@@ -126,18 +126,12 @@ spring:
       default-filters:
         - TokenRelay=
       routes:
-        - id: oauth2-authorization
+        - id: keycloak-auth
           uri: http://keycloak:8080
           predicates:
-            - Path=/oauth2/authorization/{segment}
+            - Path=/auth/**,/realms/**
           filters:
-            - RewritePath=/oauth2/authorization/(?<segment>.*), /realms/microservices-realm/protocol/openid-connect/auth/\$\{segment}
-        - id: oauth2-token
-          uri: http://keycloak:8080
-          predicates:
-            - Path=/login/oauth2/code/{segment}
-          filters:
-            - RewritePath=/login/oauth2/code/(?<segment>.*), /realms/microservices-realm/protocol/openid-connect/token/\$\{segment}
+            - RewritePath=/auth/(?<segment>.*), /${segment}
         - id: order-service
           uri: lb://order-service
           predicates:
