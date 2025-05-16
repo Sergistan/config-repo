@@ -127,10 +127,10 @@ spring:
         - TokenRelay=
       routes:
         - id: keycloak-auth
-        - uri: http://keycloak:8080
-        - predicates:
+          uri: http://keycloak:8080
+          predicates:
             - Path=/auth/**,/realms/**
-        - filters:
+          filters:
             - RewritePath=/auth/(?<segment>.*), /${segment}
         - id: order-service
           uri: lb://order-service
