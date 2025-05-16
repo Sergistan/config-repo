@@ -186,12 +186,10 @@ JWT_PUBLIC_KEY: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAus5oDGGeMlx8oB6a7NB
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
-    oauth2-redirect-url: /webjars/swagger-ui/oauth2-redirect.html
     oauth:
       client-id: spring-microservices
       client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
       scopes: openid,profile
-      use-pkce-with-authorization-code-grant: true
     urls:
       - url: /order/v3/api-docs
         name: Order Service
