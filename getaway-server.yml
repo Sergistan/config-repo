@@ -123,6 +123,12 @@ spring:
     compatibility-verifier:
       enabled: false
     gateway:
+      forwarded:
+        enabled: true
+      x-forwarded:
+        for-enabled: true
+        host-append: true
+        port-enabled: true
       default-filters:
         - TokenRelay=
       routes:
@@ -131,13 +137,13 @@ spring:
           predicates:
             - Path=/oauth2/authorization/keycloak
           filters:
-            - RewritePath=/oauth2/authorization/keycloak, /realms/microservices-realm/protocol/openid‑connect/auth
+            - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8072 
         - id: keycloak-auth-callback
           uri: http://keycloak:8080
           predicates:
             - Path=/login/oauth2/code/keycloak
           filters:
-            - RewritePath=/login/oauth2/code/keycloak, /realms/microservices-realm/protocol/openid‑connect/token
+            - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8072
         - id: order-service
           uri: lb://order-service
           predicates:
