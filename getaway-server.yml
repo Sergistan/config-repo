@@ -138,7 +138,7 @@ spring:
             - Path=/login/oauth2/code/keycloak
           filters:
             - RewritePath=/login/oauth2/code/(?<registrationId>.*), /realms/microservices-realm/protocol/openid-connect/token
-            - SetMethod=POST
+            - ConvertHttpMethod=POST
             - AddRequestHeader=Content-Type, application/x-www-form-urlencoded
         - id: order-service
           uri: lb://order-service
