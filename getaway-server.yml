@@ -129,9 +129,11 @@ spring:
         - id: keycloak-auth
           uri: http://keycloak:8080
           predicates:
-            - Path=/auth/**
+            - Path=/oauth2/authorization/**
+            - Path=/login/oauth2/code/**
           filters:
-            - RewritePath=/auth/(?<segment>.*), /${segment}
+            - RewritePath=/oauth2/authorization/keycloak, /realms/microservices-realm/protocol/openid-connect/auth
+            - RewritePath=/login/oauth2/code/keycloak, /realms/microservices-realm/protocol/openid-connect/token
         - id: order-service
           uri: lb://order-service
           predicates:
