@@ -138,6 +138,7 @@ spring:
           predicates:
             - Path=/oauth2/authorization/keycloak
           filters:
+            - PreserveHostHeader
             - RewriteResponseHeader=Location, http://keycloak:8443, http://localhost:8072
             - RewriteResponseHeader=Location, https://keycloak:8443, http://localhost:8072
         - id: keycloak-auth-callback
@@ -145,7 +146,9 @@ spring:
           predicates:
             - Path=/login/oauth2/code/keycloak
           filters:
-            - RewriteResponseHeader=Location, https://localhost:8443, http://localhost:8072
+            - PreserveHostHeader
+            - RewriteResponseHeader=Location, http://keycloak:8443, http://localhost:8072
+            - RewriteResponseHeader=Location, https://keycloak:8443, http://localhost:8072
         - id: keycloak-realm-ui
           uri: https://localhost:8443
           predicates:
