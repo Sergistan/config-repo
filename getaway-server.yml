@@ -133,18 +133,6 @@ spring:
       default-filters:
         - TokenRelay=
       routes:
-        - id: keycloak-realm-ui
-          uri: https://localhost:8443
-          predicates:
-           - Path=/realms/**,
-           - /realms/*/protocol/openid-connect/**,
-           - /realms/*/login-actions/**,
-           - /assets/**, /resources/**,
-           - /themes/**,
-           - /favicon.ico
-          filters:
-           - PreserveHostHeader
-           - RewritePath=/(?<segment>.*), /${segment}
         - id: keycloak-auth-start
           uri: https://localhost:8443
           predicates:
@@ -158,6 +146,18 @@ spring:
             - Path=/login/oauth2/code/keycloak
           filters:
             - RewriteResponseHeader=Location, https://localhost:8443, http://localhost:8072
+        - id: keycloak-realm-ui
+          uri: https://localhost:8443
+          predicates:
+            - Path=/realms/**,
+            - /realms/*/protocol/openid-connect/**,
+            - /realms/*/login-actions/**,
+            - /assets/**, /resources/**,
+            - /themes/**,
+            - /favicon.ico
+          filters:
+            - PreserveHostHeader
+            - RewritePath=/(?<segment>.*), /${segment}
         - id: order-service
           uri: lb://order-service
           predicates:
