@@ -149,12 +149,7 @@ spring:
         - id: keycloak-realm-ui
           uri: https://localhost:8443
           predicates:
-            - Path=/realms/**,
-            - /realms/*/protocol/openid-connect/**,
-            - /realms/*/login-actions/**,
-            - /assets/**, /resources/**,
-            - /themes/**,
-            - /favicon.ico
+            - Path=/realms/**,/realms/*/protocol/openid-connect/**,/realms/*/login-actions/**,/assets/**,/resources/**,/themes/**,/favicon.ico
           filters:
             - PreserveHostHeader
             - RewritePath=/(?<segment>.*), /${segment}
