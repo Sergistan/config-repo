@@ -134,17 +134,17 @@ spring:
         - TokenRelay=
       routes:
         - id: keycloak-auth-start
-          uri: https://keycloak:8443
+          uri: https://localhost:8443
           predicates:
             - Path=/oauth2/authorization/keycloak
           filters:
-            - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8072
+            - RewriteResponseHeader=Location, https://localhost:8443, http://localhost:8072
         - id: keycloak-auth-callback
-          uri: https://keycloak:8443
+          uri: https://localhost:8443
           predicates:
             - Path=/login/oauth2/code/keycloak
           filters:
-            - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8072
+            - RewriteResponseHeader=Location, https://localhost:8443, http://localhost:8072
         - id: order-service
           uri: lb://order-service
           predicates:
