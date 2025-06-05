@@ -170,6 +170,12 @@ spring:
           filters:
             - RewritePath=/payment/(?<segment>.*), /${segment}
             - PreserveHostHeader
+        - id: redirect-root-to-swagger
+          uri: http://localhost:8072           
+          predicates:
+            - Path=/
+          filters:
+            - RewritePath=/, /swagger-ui/index.html
     loadbalancer:
       retry:
         enabled: true
