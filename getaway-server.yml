@@ -139,14 +139,14 @@ spring:
             - Path=/oauth2/authorization/keycloak
           filters:
             - PreserveHostHeader
-            - "RewriteResponseHeader=Location,http?://keycloak:8080,http://localhost:8072"
+            - "RewriteResponseHeader=Location,https?://keycloak:8080,http://localhost:8072"
         - id: keycloak-auth-callback
           uri: http://localhost:8080
           predicates:
             - Path=/login/oauth2/code/keycloak
           filters:
             - PreserveHostHeader
-            - "RewriteResponseHeader=Location,http?://keycloak:8080,http://localhost:8072"
+            - "RewriteResponseHeader=Location,https?://keycloak:8080,http://localhost:8072"
         - id: keycloak-realm-ui
           uri: http://localhost:8080
           predicates:
