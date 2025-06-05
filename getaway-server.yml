@@ -104,10 +104,10 @@ spring:
       client:
         provider:
           keycloak:
-            authorization-uri: https://keycloak:8443/realms/microservices-realm/protocol/openid-connect/auth
-            token-uri: https://keycloak:8443/realms/microservices-realm/protocol/openid-connect/token
-            user-info-uri: https://keycloak:8443/realms/microservices-realm/protocol/openid-connect/userinfo
-            jwk-set-uri: https://keycloak:8443/realms/microservices-realm/protocol/openid-connect/certs
+            authorization-uri: https://keycloak:8080/realms/microservices-realm/protocol/openid-connect/auth
+            token-uri: https://keycloak:8080/realms/microservices-realm/protocol/openid-connect/token
+            user-info-uri: https://keycloak:8080/realms/microservices-realm/protocol/openid-connect/userinfo
+            jwk-set-uri: https://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
             user-name-attribute: preferred_username
         registration:
           keycloak:
@@ -118,7 +118,7 @@ spring:
             scope: openid
       resourceserver:
         jwt:
-          jwk-set-uri: https://keycloak:8443/realms/microservices-realm/protocol/openid-connect/certs
+          jwk-set-uri: https://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
   cloud:
     compatibility-verifier:
       enabled: false
@@ -134,21 +134,21 @@ spring:
         - TokenRelay=
       routes:
         - id: keycloak-auth-start
-          uri: https://localhost:8443
+          uri: https://localhost:8080
           predicates:
             - Path=/oauth2/authorization/keycloak
           filters:
             - PreserveHostHeader
-            - "RewriteResponseHeader=Location,https?://keycloak:8443,https://localhost:8072"
+            - "RewriteResponseHeader=Location,https?://keycloak:8080,https://localhost:8072"
         - id: keycloak-auth-callback
-          uri: https://localhost:8443
+          uri: https://localhost:8080
           predicates:
             - Path=/login/oauth2/code/keycloak
           filters:
             - PreserveHostHeader
-            - "RewriteResponseHeader=Location,https?://keycloak:8443,https://localhost:8072"
+            - "RewriteResponseHeader=Location,https?://keycloak:8080,https://localhost:8072"
         - id: keycloak-realm-ui
-          uri: https://localhost:8443
+          uri: https://localhost:8080
           predicates:
             - Path=/realms/**,/realms/*/protocol/openid-connect/**,/realms/*/login-actions/**,/assets/**,/resources/**,/themes/**,/favicon.ico
           filters:
