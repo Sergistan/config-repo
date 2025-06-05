@@ -104,10 +104,10 @@ spring:
       client:
         provider:
           keycloak:
-            authorization-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/auth
-            token-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/token
-            user-info-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/userinfo
-            jwk-set-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
+            authorization-uri: http://localhost:8072/realms/microservices-realm/protocol/openid-connect/auth
+            token-uri: http://localhost:8072/realms/microservices-realm/protocol/openid-connect/token
+            user-info-uri: http://localhost:8072/realms/microservices-realm/protocol/openid-connect/userinfo
+            jwk-set-uri: http://localhost:8072/realms/microservices-realm/protocol/openid-connect/certs
             user-name-attribute: preferred_username
         registration:
           keycloak:
@@ -118,28 +118,19 @@ spring:
             scope: openid
       resourceserver:
         jwt:
-          jwk-set-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
+          jwk-set-uri: http://localhost:8072/realms/microservices-realm/protocol/openid-connect/certs
   cloud:
-    compatibility-verifier:
-      enabled: false
     gateway:
-      forwarded:
-        enabled: true
-      x-forwarded:
-        for-enabled: true
-        host-append: true
-        port-enabled: true
-        proto-enabled: true
       default-filters:
         - TokenRelay=
       routes:
         - id: keycloak-auth-start
           uri: http://localhost:8080
           predicates:
-            - Path=/oauth2/authorization/keycloak
+            - Path=/realms/**,/realms/*/protocol/openid-connect/**,/realms/*/login-actions/**,/assets/**,/resources/**,/themes/**,/favicon.ico
           filters:
             - PreserveHostHeader
-            - "RewriteResponseHeader=Location,https?://keycloak:8080,http://localhost:8072"
+            - RewritePath=/(?<segment>.*), /${segment}
         - id: keycloak-auth-callback
           uri: http://localhost:8080
           predicates:
