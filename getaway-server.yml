@@ -125,21 +125,21 @@ spring:
         - TokenRelay=
       routes:
         - id: keycloak-auth-start
-          uri: http://localhost:8080
+          uri: http://keycloak:8080
           predicates:
             - Path=/realms/**,/realms/*/protocol/openid-connect/**,/realms/*/login-actions/**,/assets/**,/resources/**,/themes/**,/favicon.ico
           filters:
             - PreserveHostHeader
             - RewritePath=/(?<segment>.*), /${segment}
         - id: keycloak-auth-callback
-          uri: http://localhost:8080
+          uri: http://keycloak:8080
           predicates:
             - Path=/login/oauth2/code/keycloak
           filters:
             - PreserveHostHeader
             - "RewriteResponseHeader=Location,https?://keycloak:8080,http://localhost:8072"
         - id: keycloak-realm-ui
-          uri: http://localhost:8080
+          uri: http://keycloak:8080
           predicates:
             - Path=/realms/**,/realms/*/protocol/openid-connect/**,/realms/*/login-actions/**,/assets/**,/resources/**,/themes/**,/favicon.ico
           filters:
