@@ -157,6 +157,7 @@ spring:
             - Path=/order/v3/api-docs/**
           filters:
             - PreserveHostHeader
+            - RewritePath=/order/(?<segment>.*), /${segment}
         - id: shop-service
           uri: http://shop-service:8181
           predicates:
@@ -170,6 +171,7 @@ spring:
             - Path=/shop/v3/api-docs/**
           filters:
             - PreserveHostHeader
+            - RewritePath=/shop/(?<segment>.*), /${segment}
         - id: payment-service
           uri: http://payment-service:8182
           predicates:
@@ -183,6 +185,7 @@ spring:
             - Path=/payment/v3/api-docs/**
           filters:
             - PreserveHostHeader
+            - RewritePath=/payment/(?<segment>.*), /${segment}
     loadbalancer:
       retry:
         enabled: true
