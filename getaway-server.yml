@@ -110,6 +110,14 @@ spring:
             client-id: spring-microservices
             client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
             authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - openid
+              - profile
+          keycloak-swagger:
+            client-id: spring-microservices
+            client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
+            authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/webjars/swagger-ui/oauth2-redirect.html"
             scope:
               - openid
