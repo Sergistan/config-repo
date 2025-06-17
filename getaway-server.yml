@@ -145,14 +145,14 @@ spring:
             - PreserveHostHeader
             - RewritePath=/(?<segment>.*), /${segment}
         - id: order-service
-          uri: lb://order-service
+          uri: http://order-service:8180
           predicates:
             - Path=/order/api/v1/**
           filters:
             - PreserveHostHeader
             - RewritePath=/order/(?<path>.*), /${path}
         - id: order-service-docs
-          uri: lb://order-service
+          uri: http://order-service:8180
           predicates:
             - Path=/order/v3/api-docs
             - Path=/order/v3/api-docs/**
@@ -160,14 +160,14 @@ spring:
             - PreserveHostHeader
             - RewritePath=/order/(?<segment>.*), /${segment}
         - id: shop-service
-          uri: lb://shop-service
+          uri: http://shop-service:8181
           predicates:
             - Path=/shop/api/v1/**
           filters:
             - PreserveHostHeader
             - RewritePath=/shop/(?<path>.*), /${path}
         - id: shop-service-docs
-          uri: lb://shop-service
+          uri: http://shop-service:8181
           predicates:
             - Path=/shop/v3/api-docs
             - Path=/shop/v3/api-docs/**
@@ -175,14 +175,14 @@ spring:
             - PreserveHostHeader
             - RewritePath=/shop/(?<segment>.*), /${segment}
         - id: payment-service
-          uri: lb://payment-service
+          uri: http://payment-service:8182
           predicates:
             - Path=/payment/api/v1/**
           filters:
             - PreserveHostHeader
             - RewritePath=/payment/(?<path>.*), /${path}
         - id: payment-service-docs
-          uri: lb://payment-service
+          uri: http://payment-service:8182
           predicates:
             - Path=/payment/v3/api-docs
             - Path=/payment/v3/api-docs/**
