@@ -144,7 +144,7 @@ spring:
         - id: order-service-docs
           uri: lb://order-service
           predicates:
-            - Path=/order/v3/api-docs/**
+            - Path=/order/v3/api-docs/**, /order/v3/api-docs/**
           filters:
             - RewritePath=/order/(?<segment>.*), /${segment}
             - PreserveHostHeader
@@ -157,7 +157,7 @@ spring:
         - id: shop-service-docs
           uri: lb://shop-service
           predicates:
-            - Path=/shop/v3/api-docs/**
+            - Path=/shop/v3/api-docs/**, /shop/v3/api-docs/**
           filters:
             - RewritePath=/shop/(?<segment>.*), /${segment}
             - PreserveHostHeader
@@ -170,7 +170,7 @@ spring:
         - id: payment-service-docs
           uri: lb://payment-service
           predicates:
-            - Path=/payment/v3/api-docs/**
+            - Path=/payment/v3/api-docs/**, /payment/v3/api-docs/**
           filters:
             - RewritePath=/payment/(?<segment>.*), /${segment}
             - PreserveHostHeader
