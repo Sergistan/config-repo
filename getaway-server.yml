@@ -115,6 +115,7 @@ spring:
               - openid
               - profile
           keycloak-swagger:
+            provider: keycloak
             client-id: spring-microservices
             client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
             authorization-grant-type: authorization_code
