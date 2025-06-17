@@ -206,6 +206,7 @@ springdoc:
   webjars:
     prefix: /webjars
   swagger-ui:
+    persist-authorization: false
     path: /swagger-ui.html
     oauth2-redirect-url: /webjars/swagger-ui/oauth2-redirect.html
     oauth:
