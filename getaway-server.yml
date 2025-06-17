@@ -124,10 +124,6 @@ spring:
       default-filters:
         - TokenRelay=
       routes:
-        - id: oauth2-callback
-          uri: http://localhost:8072  # оставляем на самом себе
-          predicates:
-            - Path=/oauth2/**,/login/oauth2/**
         - id: keycloak-realm-ui
           uri: http://keycloak:8080
           predicates:
