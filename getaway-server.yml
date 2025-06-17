@@ -104,21 +104,19 @@ spring:
       client:
         provider:
           keycloak:
-            authorization-uri: http://localhost:8072/realms/microservices-realm/protocol/openid-connect/auth
-            token-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/token
-            user-info-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/userinfo
-            jwk-set-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
-            user-name-attribute: preferred_username
+            issuer-uri: http://keycloak:8080/realms/microservices-realm
         registration:
           keycloak:
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             client-id: spring-microservices
             client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
             authorization-grant-type: authorization_code
-            scope: openid
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - openid
+              - profile
       resourceserver:
         jwt:
-          jwk-set-uri: http://keycloak:8080/realms/microservices-realm/protocol/openid-connect/certs
+          issuer-uri: http://keycloak:8080/realms/microservices-realm
   cloud:
     gateway:
       default-filters:
