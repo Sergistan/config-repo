@@ -150,7 +150,6 @@ spring:
             - Path=/order/api/v1/**
           filters:
             - PreserveHostHeader
-            - RewritePath=/order/(?<path>.*), /${path}
         - id: order-service-docs
           uri: http://order-service:8180
           predicates:
@@ -158,14 +157,12 @@ spring:
             - Path=/order/v3/api-docs/**
           filters:
             - PreserveHostHeader
-            - RewritePath=/order/(?<segment>.*), /${segment}
         - id: shop-service
           uri: http://shop-service:8181
           predicates:
             - Path=/shop/api/v1/**
           filters:
             - PreserveHostHeader
-            - RewritePath=/shop/(?<path>.*), /${path}
         - id: shop-service-docs
           uri: http://shop-service:8181
           predicates:
@@ -173,14 +170,12 @@ spring:
             - Path=/shop/v3/api-docs/**
           filters:
             - PreserveHostHeader
-            - RewritePath=/shop/(?<segment>.*), /${segment}
         - id: payment-service
           uri: http://payment-service:8182
           predicates:
             - Path=/payment/api/v1/**
           filters:
             - PreserveHostHeader
-            - RewritePath=/payment/(?<path>.*), /${path}
         - id: payment-service-docs
           uri: http://payment-service:8182
           predicates:
@@ -188,7 +183,6 @@ spring:
             - Path=/payment/v3/api-docs/**
           filters:
             - PreserveHostHeader
-            - RewritePath=/payment/(?<segment>.*), /${segment}
     loadbalancer:
       retry:
         enabled: true
