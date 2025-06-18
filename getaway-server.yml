@@ -95,6 +95,9 @@
 #        name: Payment Service
 
 spring:
+  web:
+    resources:
+      static-locations: classpath:/static/
   zipkin:
     base-url: http://zipkin:9411/
     sender:
@@ -192,25 +195,9 @@ server:
   forward-headers-strategy: framework
 JWT_PUBLIC_KEY: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAus5oDGGeMlx8oB6a7NB9iyIIzFexizkhLW0M+G6Gy5elgHzbZdVey9tqtEGan2dfudUIN1hZeOumQYFYjnfeLHx88EMmSaOzM+8wf9tpBcZt0O60d1mffnJ8LHQCqqzLytB2nHvU5wZDrtwhkvoJTMrdhoyTrVeXpsXTzoni92M5UPz17g+NqiE3o+/SopFrPuCTMFT9IpMIWe16+Y5Zf3Qg87LduzMcJT9eDxOEbO9HG/A6YTdxbooiAHqATfOpWFTxX3CwoTP7MXA6wEeqCUbVN+5iL8EVFWL0wIOwxxCMTVrE5ZtVFSWt5Id0ZgkblY6576wxPHGomQqw2M2ztQIDAQAB"
 springdoc:
-  webjars:
-    prefix: /webjars
   swagger-ui:
-    persist-authorization: false
-    path: /swagger-ui.html
-    oauth2-redirect-url: /webjars/swagger-ui/oauth2-redirect.html
-    oauth:
-      authorization-url: /oauth2/authorization/keycloak
-      token-url: /login/oauth2/code/keycloak
-      client-id: spring-microservices
-      client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
-      scopes: openid,profile
-      use-pkce-with-authorization-code-grant: true
-      use-basic-authentication-with-access-code-grant: false
-    urls:
-      - url: /order/v3/api-docs
-        name: Order Service
-      - url: /shop/v3/api-docs
-        name: Shop Service
+    csrf:
+      enabled: false
 management:
   zipkin:
     tracing:
