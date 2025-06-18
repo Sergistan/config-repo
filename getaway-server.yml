@@ -97,7 +97,9 @@
 spring:
   web:
     resources:
-      static-locations: classpath:/static/
+      static-locations:
+        - classpath:/static/
+        - classpath:/META-INF/resources/
   zipkin:
     base-url: http://zipkin:9411/
     sender:
