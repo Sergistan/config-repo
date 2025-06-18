@@ -211,8 +211,6 @@ springdoc:
         name: Order Service
       - url: /shop/v3/api-docs
         name: Shop Service
-      - url: /payment/v3/api-docs
-        name: Payment Service
 management:
   zipkin:
     tracing:
