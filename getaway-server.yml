@@ -178,14 +178,6 @@ spring:
             - Path=/payment/api/v1/**
           filters:
             - PreserveHostHeader
-        - id: payment-service-docs
-          uri: http://payment-service:8182
-          predicates:
-            - Path=/payment/v3/api-docs
-            - Path=/payment/v3/api-docs/**
-          filters:
-            - PreserveHostHeader
-            - RewritePath=/payment/(?<segment>.*), /${segment}
     loadbalancer:
       retry:
         enabled: true
@@ -219,8 +211,6 @@ springdoc:
         name: Order Service
       - url: /shop/v3/api-docs
         name: Shop Service
-      - url: /payment/v3/api-docs
-        name: Payment Service
 management:
   zipkin:
     tracing:
