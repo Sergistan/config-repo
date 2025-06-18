@@ -16,8 +16,10 @@ server:
 eureka:
   instance:
     hostname: eureka-server
-    prefer-ip-address: false  
+    prefer-ip-address: false
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: http://config-server:8071/eureka/
  
