@@ -199,8 +199,8 @@ springdoc:
     path: /swagger-ui.html
     oauth2-redirect-url: /webjars/swagger-ui/oauth2-redirect.html
     oauth:
-      authorization-url: /oauth2/authorization/keycloak
-      token-url: /login/oauth2/code/keycloak
+      authorization-url: /oauth2/authorization/keycloak-swagger
+      token-url: /login/oauth2/code/keycloak-swagger
       client-id: spring-microservices
       client-secret: apIkjKljSVdsDtzUknhm8AKIFECM2AfX
       scopes: openid,profile
