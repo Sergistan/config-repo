@@ -185,6 +185,9 @@ resilience4j:
           - java.io.IOException
           - java.util.concurrent.TimeoutException
           - org.springframework.web.client.ResourceAccessException
+        ignoreExceptions:
+          - feign.FeignException
+          - com.utochkin.orderservice.exceptions.FailedPayOrderException
       circuitBreakerRefundedOrder:
         registerHealthIndicator: true
         slidingWindowSize: 5
@@ -196,6 +199,9 @@ resilience4j:
           - java.io.IOException
           - java.util.concurrent.TimeoutException
           - org.springframework.web.client.ResourceAccessException
+        ignoreExceptions:
+          - feign.FeignException
+          - com.utochkin.orderservice.exceptions.FailedPayOrderException
   retry:
     instances:
       retryCheckOrder:
