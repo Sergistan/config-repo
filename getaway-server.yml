@@ -229,6 +229,7 @@ management:
   endpoint:
     prometheus:
       access: unrestricted
+logging:
   logstash:
     host: logstash
     port: 5000
