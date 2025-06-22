@@ -230,6 +230,8 @@ management:
     prometheus:
       access: unrestricted
 logging:
+  level:
+    root: INFO
   logstash:
     host: logstash
     port: 5000
