@@ -251,9 +251,6 @@ management:
   zipkin:
     tracing:
       endpoint: http://zipkin:9411/api/v2/spans
-logging:
-  level:
-    root: INFO
   logstash:
     host: logstash
     port: 5000
