@@ -224,6 +224,13 @@ resilience4j:
         waitDuration: 10s
         retryExceptions:
           - java.util.concurrent.TimeoutException
+outbox:
+  relay:
+    fixed-delay: 1000
+order:
+  reconciliation:
+    fixed-delay: 60000       
+    stuck-threshold-minutes: 10
 eureka:
   client:
     register-with-eureka: true
