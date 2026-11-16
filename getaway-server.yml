@@ -95,6 +95,10 @@
 #        name: Payment Service
 
 spring:
+  data:
+    redis:
+      host: redis
+      port: 6379
   zipkin:
     base-url: http://zipkin:9411/
     sender:
@@ -150,6 +154,11 @@ spring:
             - Path=/order/api/v1/**
           filters:
             - PreserveHostHeader
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                key-resolver: "#{@userKeyResolver}"
         - id: order-service-docs
           uri: http://order-service:8180
           predicates:
@@ -164,6 +173,11 @@ spring:
             - Path=/shop/api/v1/**
           filters:
             - PreserveHostHeader
+            - name: RequestRateLimiter
+            - args:
+               redis-rate-limiter.replenishRate: 10
+               redis-rate-limiter.burstCapacity: 20
+               key-resolver: "#{@userKeyResolver}"
         - id: shop-service-docs
           uri: http://shop-service:8181
           predicates:
