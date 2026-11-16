@@ -112,10 +112,6 @@
 #  port: 8180
 
 spring:
-  zipkin:
-    base-url: http://zipkin:9411/
-    sender:
-      type: web
   security:
     oauth2:
       client:

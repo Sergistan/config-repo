@@ -36,10 +36,6 @@ spring:
   cloud:
     compatibility-verifier:
       enabled: false
-  zipkin:
-    base-url: http://zipkin:9411/
-    sender:
-      type: web
   data:
     mongodb:
       uri: mongodb://admin:pass@mongo:27017/HistoryServiceDB?authSource=admin
