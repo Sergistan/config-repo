@@ -118,6 +118,18 @@ spring:
       type: web
   security:
     oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak:8080/realms/microservices-realm
+        registration:
+          keycloak-service:
+            provider: keycloak
+            client-id: order-service-client
+            client-secret: ydsQcipIQCkv1PmUoraCDgmJtBOyT4sB
+            authorization-grant-type: client_credentials
+            scope:
+              - openid
       resourceserver:
         jwt:
           issuer-uri: http://keycloak:8080/realms/microservices-realm
