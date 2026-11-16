@@ -70,7 +70,7 @@ spring:
           auth: true
           starttls:
             enable: true
-    test-connection: true
+    test-connection: false
 eureka:
   instance:
     prefer-ip-address: true
