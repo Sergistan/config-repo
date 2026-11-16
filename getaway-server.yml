@@ -211,6 +211,8 @@ springdoc:
         name: Order Service
       - url: /shop/v3/api-docs
         name: Shop Service
+cors:
+  allowed-origins: http://localhost:8072,http://localhost:3000
 management:
   zipkin:
     tracing:
