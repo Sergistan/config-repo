@@ -170,10 +170,10 @@ spring:
           filters:
             - PreserveHostHeader
             - name: RequestRateLimiter
-            - args:
-               redis-rate-limiter.replenishRate: 10
-               redis-rate-limiter.burstCapacity: 20
-               key-resolver: "#{@userKeyResolver}"
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                key-resolver: "#{@userKeyResolver}"
         - id: shop-service-docs
           uri: http://shop-service:8181
           predicates:
@@ -192,6 +192,8 @@ spring:
       retry:
         enabled: true
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry:    true

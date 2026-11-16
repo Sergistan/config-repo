@@ -39,10 +39,6 @@
 #  port: 8181
 
 spring:
-  zipkin:
-    base-url: http://zipkin:9411/
-    sender:
-      type: web
   security:
     oauth2:
       resourceserver:
@@ -74,6 +70,8 @@ spring:
       host: redis
       port: 6379
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry:    true

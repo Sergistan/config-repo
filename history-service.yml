@@ -61,6 +61,8 @@ spring:
     listener:
       ack-mode: manual_immediate
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry:    true

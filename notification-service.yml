@@ -75,6 +75,8 @@ spring:
             enable: true
     test-connection: true
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry:    true
