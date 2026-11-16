@@ -40,16 +40,13 @@
 #  port: 8183
 
 spring:
-  cloud:
-    compatibility-verifier:
-      enabled: false
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: http://keycloak:8080/realms/microservices-realm
   kafka:
-    bootstrap-servers: kafka:29092, localhost:9092
+    bootstrap-servers: kafka:29092
     consumer:
       group-id: notification-group
       auto-offset-reset: earliest

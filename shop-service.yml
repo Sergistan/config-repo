@@ -44,12 +44,6 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://keycloak:8080/realms/microservices-realm
-  cloud:
-    compatibility-verifier:
-      enabled: false
-    openfeign:
-      oauth2:
-        enabled: false
   datasource:
     url: jdbc:postgresql://postgres-shop:5432/ShopServiceDB
     username: postgres
