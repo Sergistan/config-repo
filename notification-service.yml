@@ -60,7 +60,7 @@ spring:
     listener:
       ack-mode: manual_immediate
   mail:
-    host: smtp.gmail.com
+    host: smtp.yandex.ru
     port: 465
     username: "{cipher}ac36f434b2f31ea00acbd87cb0292f0f5b8e79c7d43610f54b38ebd266e0dd6517f9d55d0116f9aa4e2b98ff6b74b2bf"
     password: "{cipher}0d0272fb04485f104b01e561695ffd098370b4809c330fb45efd8a1b87f953824797e60d505742ae61157494cd13e2e2"
