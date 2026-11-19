@@ -70,6 +70,9 @@ spring:
           auth: true
           ssl:
             enable: true
+          connectiontimeout: 5000
+          timeout: 10000
+          writetimeout: 10000
     test-connection: false
 eureka:
   instance:
