@@ -182,12 +182,6 @@ spring:
           filters:
             - PreserveHostHeader
             - RewritePath=/shop/(?<segment>.*), /${segment}
-        - id: payment-service
-          uri: http://payment-service:8182
-          predicates:
-            - Path=/payment/api/v1/**
-          filters:
-            - PreserveHostHeader
         - id: auth-service
           uri: http://auth-service:8185
           predicates:
