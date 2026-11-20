@@ -57,6 +57,7 @@ spring:
         spring.json.trusted.packages: "com.utochkin.orderservice.dto,com.utochkin.historyservice.dto"
     listener:
       ack-mode: manual_immediate
+      observation-enabled: true
 eureka:
   instance:
     prefer-ip-address: true

@@ -148,6 +148,8 @@ spring:
     bootstrap-servers: kafka:29092, localhost:9092
     properties:
       security.protocol: PLAINTEXT
+    template:
+      observation-enabled: true
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
