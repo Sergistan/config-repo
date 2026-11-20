@@ -1,0 +1,94 @@
+# для локального запуска
+#spring:
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://localhost:8080/realms/microservices-realm
+#keycloak:
+#  admin:
+#    base-url: http://localhost:8080/admin/realms/microservices-realm
+#server:
+#  port: 8185
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak:8080/realms/microservices-realm
+        registration:
+          keycloak-service:
+            provider: keycloak
+            client-id: auth-service-client
+            client-secret: 0MGouZS1Z0MHSqRMms8UI7t1lRWCwhUU
+            authorization-grant-type: client_credentials
+            scope:
+              - openid
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/microservices-realm
+keycloak:
+  admin:
+    base-url: http://keycloak:8080/admin/realms/microservices-realm
+    target-client-id: spring-microservices
+    connect-timeout-ms: 5000
+    read-timeout-ms: 10000
+resilience4j:
+  circuitbreaker:
+    instances:
+      circuitBreakerRegisterUser:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.io.IOException
+          - java.util.concurrent.TimeoutException
+          - org.springframework.web.client.ResourceAccessException
+  retry:
+    instances:
+      retryHasActiveOrders:
+        max-attempts: 3
+        waitDuration: 10s
+        retryExceptions:
+          - java.util.concurrent.TimeoutException
+          - feign.RetryableException
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+server:
+  port: 8185
+  forward-headers-strategy: framework
+management:
+  tracing:
+    sampling:
+      probability: 0.1
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,trace
+  endpoint:
+    prometheus:
+      access: unrestricted
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
+logging:
+  level:
+    root: INFO
+  logstash:
+    host: logstash
+    port: 5000
