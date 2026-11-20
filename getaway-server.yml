@@ -188,6 +188,25 @@ spring:
             - Path=/payment/api/v1/**
           filters:
             - PreserveHostHeader
+        - id: auth-service
+          uri: http://auth-service:8185
+          predicates:
+            - Path=/auth/api/v1/**
+          filters:
+            - PreserveHostHeader
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 5
+                redis-rate-limiter.burstCapacity: 10
+                key-resolver: "#{@userKeyResolver}"
+        - id: auth-service-docs
+          uri: http://auth-service:8185
+          predicates:
+            - Path=/auth/v3/api-docs
+            - Path=/auth/v3/api-docs/**
+          filters:
+            - PreserveHostHeader
+            - RewritePath=/auth/(?<segment>.*), /${segment}
     loadbalancer:
       retry:
         enabled: true
@@ -221,6 +240,8 @@ springdoc:
         name: Order Service
       - url: /shop/v3/api-docs
         name: Shop Service
+      - url: /auth/v3/api-docs
+        name: Auth Service
 cors:
   allowed-origins: http://localhost:8072,http://localhost:3000
 management:
